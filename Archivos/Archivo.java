@@ -10,18 +10,18 @@ public class Archivo {
     private ObjectOutputStream archivoUsuarioOut;
     private ObjectInputStream archivoLibroIn;
     private ObjectInputStream archivoUsuarioIn;
-
+   
     private Archivo(){
         File archivoLibro = new File("Libros");
         File archivoUsuario = new File("Usuarios");
-        if(archivoLibro.exists()){
+        if(!archivoLibro.exists()){
             try {
                 archivoLibro.createNewFile();
             } catch (IOException ex) {
                 System.out.println("Error: " + ex.getMessage());
             } 
         }
-        if(archivoUsuario.exists()){
+        if(!archivoUsuario.exists()){
             try {
                 archivoUsuario.createNewFile();
             } catch (IOException ex) {
