@@ -1,4 +1,4 @@
-package Archivos;
+
 import Usuarios.Administrador;
 
 public class Biblioteca {

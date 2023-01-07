@@ -6,44 +6,38 @@ import Usuarios.*;
 
 public class Archivo {
     private static Archivo archivo; //Singleton
-    private ObjectOutputStream archivoLibroOut;
-    private ObjectOutputStream archivoUsuarioOut;
-    private ObjectInputStream archivoLibroIn;
-    private ObjectInputStream archivoUsuarioIn;
+    private File archivoLibro;
+    private File archivoUsuario;
+
    
     private Archivo(){
-        File archivoLibro = new File("Libros");
-        File archivoUsuario = new File("Usuarios");
-        if(!archivoLibro.exists()){
+        File archivoLi = new File("Libros");
+        File archivoUsu = new File("Usuarios");
+        if(!archivoLi.exists()){
             try {
-                archivoLibro.createNewFile();
+                archivoLi.createNewFile();
             } catch (IOException ex) {
                 System.out.println("Error: " + ex.getMessage());
             } 
         }
-        if(!archivoUsuario.exists()){
+        if(!archivoUsu.exists()){
             try {
-                archivoUsuario.createNewFile();
+                archivoUsu.createNewFile();
             } catch (IOException ex) {
                 System.out.println("Error: " + ex.getMessage());
             }
         }
-        try {
-            this.archivoLibroOut = new ObjectOutputStream(new FileOutputStream(archivoLibro));
-            this.archivoLibroIn = new ObjectInputStream(new FileInputStream(archivoLibro));
-            this.archivoUsuarioOut = new ObjectOutputStream(new FileOutputStream(archivoUsuario));
-            this.archivoUsuarioIn = new ObjectInputStream(new FileInputStream(archivoUsuario));
-        } catch (IOException ex) {
-            System.out.println("Error: " + ex.getMessage());
-        }
-        
+        this.archivoLibro = archivoLi;
+        this.archivoUsuario = archivoUsu;
     }
 
-    public ArrayList<Libro> LeerArchivoLibro(){
+    public ArrayList<Libro> LeerArchivoLibro(){      
+        ObjectInputStream archivoLibroIn;
         ArrayList<Libro> libros = new ArrayList<>();
         try {
-            libros = (ArrayList<Libro>) this.archivoLibroIn.readObject();
-            this.archivoLibroIn.close();
+            archivoLibroIn = new ObjectInputStream(new FileInputStream(archivoLibro));
+            libros = (ArrayList<Libro>) archivoLibroIn.readObject();
+            archivoLibroIn.close();
             return libros;
         } catch (IOException ex) {
             System.out.println("Error: " + ex.getMessage());
@@ -55,17 +49,23 @@ public class Archivo {
 
     public void GuardarLibro(Libro libro){
         ArrayList<Libro> libros = LeerArchivoLibro();
+        ObjectOutputStream archivoLibroOut;
         libros.add(libro);
         try {
-            this.archivoLibroOut.writeObject(libros);
+            archivoLibroOut = new ObjectOutputStream(new FileOutputStream(archivoLibro));
+            archivoLibroOut.writeObject(libros);
+            archivoLibroOut.close();
         } catch (IOException ex) {
             System.out.println("Error: " + ex.getMessage());
         }
     }
 
     public void ActualizarLibro(ArrayList<Libro> libros){
+        ObjectOutputStream archivoLibroOut;
         try {
-            this.archivoLibroOut.writeObject(libros);
+            archivoLibroOut = new ObjectOutputStream(new FileOutputStream(archivoLibro));
+            archivoLibroOut.writeObject(libros);
+            archivoLibroOut.close();
         } catch (IOException ex) {
             System.out.println("Error: " + ex.getMessage());
         }
@@ -73,10 +73,13 @@ public class Archivo {
 
 
     public ArrayList<Usuario> LeerArchivoUsuario(){
+        ObjectInputStream archivoUsuarioIn;
+         
         ArrayList<Usuario> usuarios = new ArrayList<>();
         try {
-            usuarios = (ArrayList<Usuario>) this.archivoUsuarioIn.readObject();
-            this.archivoLibroIn.close();
+            archivoUsuarioIn = new ObjectInputStream(new FileInputStream(archivoUsuario));
+            usuarios = (ArrayList<Usuario>) archivoUsuarioIn.readObject();
+            archivoUsuarioIn.close();
             return usuarios;
         } catch (IOException ex) {
             System.out.println("Error: " + ex.getMessage());
@@ -87,10 +90,14 @@ public class Archivo {
     }
 
     public void GuardarUsuario(Usuario usuario){
+        ObjectOutputStream archivoUsuarioOut;
+       
         ArrayList<Usuario> usuarios = LeerArchivoUsuario();
         usuarios.add(usuario);
         try {
-            this.archivoUsuarioOut.writeObject(usuarios);
+            archivoUsuarioOut = new ObjectOutputStream(new FileOutputStream(archivoUsuario));
+            archivoUsuarioOut.writeObject(usuarios);
+            archivoUsuarioOut.close();
         } catch (IOException ex) {
             System.out.println("Error: " + ex.getMessage());
         }
