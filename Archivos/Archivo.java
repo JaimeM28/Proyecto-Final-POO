@@ -95,20 +95,6 @@ public class Archivo {
             System.out.println("Error: " + ex.getMessage());
         }
     }
-
-    
-   /*  public Libro Prestado(int codigoLibro) {
-        ArrayList<Libro> libros = Archivo.getInstance().LeerArchivoLibro();
-        int indice=Archivo.search(codigoLibro, libros);
-        if (indice != -1) {
-            return libros.get(indice);
-        }
-        /* Fisico indica si esta disponible en fisico
-         *numFisicos, que indica cuantos hay  
-        
-        libros.get(indice);
-    }
-    */
    
 
     public static Archivo getInstance() {

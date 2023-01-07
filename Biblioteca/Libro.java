@@ -2,7 +2,7 @@ package Biblioteca;
 
 import java.io.Serializable;
 
-public class Libro implements Serializable{
+public class Libro implements Serializable, Comparable<Libro>{
     private int codigo;
     private String titulo;
     private String autor;
@@ -111,6 +111,11 @@ public class Libro implements Serializable{
         System.out.println("Año publicación: " + añoEd);
     }
 
+    @Override
+    public int compareTo(Libro o) {
+        return this.genero.compareToIgnoreCase(o.genero);
+    }
+ 
 }
 
 
