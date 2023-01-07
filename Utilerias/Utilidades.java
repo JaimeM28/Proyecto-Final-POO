@@ -1,9 +1,11 @@
 package Utilerias;
 import Archivos.Archivo;
 import Biblioteca.*;
+import Usuarios.Administrador;
+
 import java.util.*;
 
-public class Utilidades {
+public class Utilidades  {
     ArrayList<Libro> libros = Archivo.getInstance().LeerArchivoLibro();
     /*Busqueda por titulo, autor y genero */ 
 
@@ -50,4 +52,21 @@ public class Utilidades {
         }
         return -1;
     }
+
+    //orden por genero
+    public  void prueba()
+	{
+		List<Libro> dat = new ArrayList<>(Arrays.asList(new Libro("Harry Potter1","Jk Rwoling",2000,"Ficcion","Ecurium",123456,500,true,5,true),
+										                new Libro("Harry Potter2","Jk Rwoling",2000,"Romance","Ecurium",123456,500,true,5,true),
+										                new Libro("Harry Potter3","Jk Rwoling",2000,"Ficcion","Ecurium",123456,500,true,5,true),
+										                new Libro("Harry Potter3","Jk Rwoling",2000,"Romance","Ecurium",123456,500,true,5,true),
+										));
+
+		Collections.sort(dat);
+		System.out.println(dat);
+		
+	}
+
+    
+
 }
