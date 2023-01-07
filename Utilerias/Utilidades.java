@@ -59,7 +59,7 @@ public class Utilidades  {
 		List<Libro> dat = new ArrayList<>(Arrays.asList(new Libro("Harry Potter1","Jk Rwoling",2000,"Ficcion","Ecurium",123456,500,true,5,true),
 										                new Libro("Harry Potter2","Jk Rwoling",2000,"Romance","Ecurium",123456,500,true,5,true),
 										                new Libro("Harry Potter3","Jk Rwoling",2000,"Ficcion","Ecurium",123456,500,true,5,true),
-										                new Libro("Harry Potter3","Jk Rwoling",2000,"Romance","Ecurium",123456,500,true,5,true),
+										                new Libro("Harry Potter3","Jk Rwoling",2000,"Romance","Ecurium",123456,500,true,5,true)
 										));
 
 		Collections.sort(dat);
