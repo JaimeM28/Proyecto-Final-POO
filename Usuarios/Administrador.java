@@ -10,6 +10,38 @@ public class Administrador extends Usuario {
     private LibroBuilder builder = new LibroBuilder();
     private Scanner sc = new Scanner(System.in);
 
+    public void menu(){
+        System.out.println("Que desea hacer esta vez?");
+        boolean rep = true;
+        while(rep == true){
+            System.out.println("\n\n1.Registrar un nuevo ejemplar");
+            System.out.println("2.Editar algun ejemplar");
+            System.out.println("3.Ver toda la coleccion");
+            System.out.println("4.Terminar");
+            switch(ingresarOpcion(4)){
+                case 1:
+                    registrarLibro();
+                break;
+                case 2:
+                    editarLibros();
+                break;
+                case 3:
+                    ver();
+                    break;
+                case 4:
+                    rep = false;
+                    System.out.print("Adios");
+                   break;
+            }
+        }
+    }
+    void ver(){
+        ArrayList<Libro> libros = Archivo.getInstance().LeerArchivoLibro();
+        for(int i = 0; i < libros.size() ; i ++){
+            System.out.printf("Libro %d\n", i+1);
+            libros.get(i).datosRelevantes();
+        }
+    }
     public Administrador(String usuario, String password, String nombre, String apellido,int edad){
         super(usuario, password, nombre, apellido, edad, new ArrayList<Libro>());
     }

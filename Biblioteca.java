@@ -13,6 +13,6 @@ public class Biblioteca {
 
 
         Administrador prueba = new Administrador("Jaime", "hola123", "Jaime", "Miranda" ,18);
-        prueba.registrarLibro();
+        prueba.menu();;
     }
 }
