@@ -63,7 +63,14 @@ public class Utilidades  {
 										));
 
 		Collections.sort(dat);
-		System.out.println(dat);
+        //para que se imprima bonito
+                
+        Iterator<Libro> itrArrayList = dat.iterator();
+		int n = 1;
+		while (itrArrayList.hasNext()) {
+			System.out.println("Libro " + n + " : " + itrArrayList.next().toString());
+			n++;
+		}
 		
 	}
 
