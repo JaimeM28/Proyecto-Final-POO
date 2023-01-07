@@ -57,6 +57,9 @@ public class Libro implements Serializable{
         return añoEd;
     }
 
+    public String getGenero(){
+        return genero;
+    }
     public int getCodigo() {
         return codigo;
     }

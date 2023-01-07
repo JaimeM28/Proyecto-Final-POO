@@ -2,7 +2,7 @@ import Usuarios.Administrador;
 
 public class Biblioteca {
     public static void main(String[] args) {
-                Scanner sc =new Scanner(System.in);
+            
         
         System.out.println("\t-------------------------");
         System.out.println("\t|                        |");
